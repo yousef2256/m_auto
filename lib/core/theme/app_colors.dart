@@ -13,4 +13,8 @@ class AppColors {
   //Smantics colors
   static const Color smanticsgreen = Color(0xFF49A677);
   static const Color smanticsyellow = Color(0xFFFFD200);
+
+  // text colors
+  static const Color textGrey = Color(0xFF767676);
+  static const Color textBlack = Color(0xFF000000);
 }
