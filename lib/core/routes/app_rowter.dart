@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:m_auto/core/routes/routes.dart';
 
-
 class AppRouter {
   Route generateRouter(RouteSettings settings) {
     switch (settings.name) {
       case Routes.home:
+        return MaterialPageRoute(
+          builder: (context) => const Placeholder(),
+        );
+      case Routes.login:
         return MaterialPageRoute(
           builder: (context) => const Placeholder(),
         );
