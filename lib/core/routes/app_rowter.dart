@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:m_auto/core/api/dio_consumer.dart';
 import 'package:m_auto/core/routes/routes.dart';
 import 'package:m_auto/features/login_fetures/logic/cubit/login_cubit.dart';
 import 'package:m_auto/features/login_fetures/presentation/login_screen.dart';
@@ -14,7 +16,7 @@ class AppRouter {
       case Routes.login:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => LoginCubit(),
+            create: (context) => LoginCubit(DioConsumer(dio: Dio())),
             child: const LoginScreen(),
           ),
         );

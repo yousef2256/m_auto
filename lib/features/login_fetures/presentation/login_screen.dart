@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:m_auto/core/helpers/spaser.dart';
+import 'package:m_auto/core/helpers/validations.dart';
 import 'package:m_auto/core/theme/app_colors.dart';
 import 'package:m_auto/core/utils/constets/images_constents.dart';
 import 'package:m_auto/core/utils/texts/text_styles.dart';
@@ -21,7 +22,21 @@ class LoginScreen extends StatelessWidget {
         child: Center(
           child: SingleChildScrollView(
             child: BlocConsumer<LoginCubit, LoginState>(
-              listener: (context, state) {},
+              listener: (context, state) {
+                if (state is SignInSuccess) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Login Success"),
+                    ),
+                  );
+                } else if (state is SignInFailure) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(state.errorMessage),
+                    ),
+                  );
+                }
+              },
               builder: (context, state) {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -57,8 +72,10 @@ class LoginScreen extends StatelessWidget {
                     verticalSpace(8.h),
 
                     // email text field
-                    const CustomeTextFeald(
+                    CustomeTextFeald(
+                      controller: context.read<LoginCubit>().emailController,
                       hintText: "Email@example.com",
+                      // validator: Validations.emailValidator,
                     ),
 
                     // spaser
@@ -75,11 +92,21 @@ class LoginScreen extends StatelessWidget {
                     verticalSpace(8.h),
 
                     // password text field
-                    const CustomeTextFeald(
+                    CustomeTextFeald(
+                      controller: context.read<LoginCubit>().passwordController,
                       hintText: "*************",
-                      suffixIcon: Icon(
-                        Icons.visibility,
-                        color: AppColors.textGrey,
+                      obscureText: context.read<LoginCubit>().showPassword,
+                      // validator: Validations.passwordValidator,
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          context.read<LoginCubit>().changeShowPassword();
+                        },
+                        icon: Icon(
+                          color: AppColors.textGrey,
+                          context.read<LoginCubit>().showPassword
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                        ),
                       ),
                     ),
 
@@ -104,10 +131,16 @@ class LoginScreen extends StatelessWidget {
                     verticalSpace(50.h),
 
                     // login button
-                    CustomeButton(
-                      text: "Login",
-                      onPressed: () {},
-                    ),
+                    state is SignInLoadingState
+                        ? const Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : CustomeButton(
+                            text: "Login",
+                            onPressed: () {
+                              context.read<LoginCubit>().signIn();
+                            },
+                          ),
 
                     verticalSpace(10.h),
 
