@@ -11,12 +11,16 @@ class ApiKeys {
   static const String error = 'error';
   static const String jsonrpc = 'jsonrpc';
   static const String id = 'id';
+  static const String params = 'params';
+  static const String isSalesperson = 'is_salesperson';
+  static const String isBranchManager = 'is_branch_manager';
+  static const String isDirector = 'is_director';
 
   // tokens
   static const String accessToken = 'access_token';
   static const String refreshToken = 'refresh_token';
 
   // Email And Password
-  static const String email = 'email';
+  static const String username = 'username';
   static const String password = 'password';
 }

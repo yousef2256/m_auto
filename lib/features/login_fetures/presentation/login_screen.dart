@@ -57,7 +57,7 @@ class LoginScreen extends StatelessWidget {
                       style: TextStyles.text22px700w,
                     ),
                     // spaser
-                    verticalSpace(10.h),
+                    verticalSpace(40.h),
 
                     // Email text
                     Align(
@@ -74,6 +74,8 @@ class LoginScreen extends StatelessWidget {
                     CustomeTextFeald(
                       controller: context.read<LoginCubit>().emailController,
                       hintText: "Email@example.com",
+
+                      /// TODO: Add Email Validator
                       // validator: Validations.emailValidator,
                     ),
 
@@ -95,6 +97,8 @@ class LoginScreen extends StatelessWidget {
                       controller: context.read<LoginCubit>().passwordController,
                       hintText: "*************",
                       obscureText: context.read<LoginCubit>().showPassword,
+
+                      /// TODO: Add Password Validator
                       // validator: Validations.passwordValidator,
                       suffixIcon: IconButton(
                         onPressed: () {
@@ -127,7 +131,7 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
 
-                    verticalSpace(50.h),
+                    verticalSpace(15.h),
 
                     // login button
                     state is SignInLoadingState

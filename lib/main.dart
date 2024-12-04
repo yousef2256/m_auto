@@ -8,6 +8,8 @@ import 'package:m_auto/m_auto_app.dart';
 void main() {
   // add observer
   Bloc.observer = MyBlocObserver();
+  // ensure initialized
+  WidgetsFlutterBinding.ensureInitialized();
 
   // run app
   runApp(
