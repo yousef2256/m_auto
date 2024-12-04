@@ -55,15 +55,13 @@ class LoginCubit extends Cubit<LoginState> {
             result[ApiKeys.refreshToken] != null) {
           emit(SignInSuccess());
           userData = SignInModel.fromJson(result);
-          print(userData?.accessToken);
-          print(
-              "===================================================================");
-          print(userData?.refreshToken);
         } else {
-          emit(SignInFailure(errorMessage: 'Invalid response format'));
+          emit(SignInFailure(
+              errorMessage: 'Plese check your email and password'));
         }
       } else {
-        emit(SignInFailure(errorMessage: 'Invalid response format'));
+        emit(
+            SignInFailure(errorMessage: 'Plese check your email and password'));
       }
     } on ApiErrorHandler catch (e) {
       emit(SignInFailure(errorMessage: e.errorModel.error));
