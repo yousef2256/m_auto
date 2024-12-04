@@ -55,6 +55,10 @@ class LoginCubit extends Cubit<LoginState> {
             result[ApiKeys.refreshToken] != null) {
           emit(SignInSuccess());
           userData = SignInModel.fromJson(result);
+          print(userData?.accessToken);
+          print(
+              "===================================================================");
+          print(userData?.refreshToken);
         } else {
           emit(SignInFailure(errorMessage: 'Invalid response format'));
         }

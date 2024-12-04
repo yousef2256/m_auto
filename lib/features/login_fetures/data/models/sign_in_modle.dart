@@ -1,12 +1,12 @@
 import 'package:m_auto/core/api/api_constents.dart';
 
 class SignInModel {
-  final String jsonrpc;
-  final String accessToken;
-  final String refreshToken;
-  final bool isSalesperson;
-  final bool isBranchManager;
-  final bool isDirector;
+  final String? jsonrpc;
+  final String? accessToken;
+  final String? refreshToken;
+  final bool? isSalesperson;
+  final bool? isBranchManager;
+  final bool? isDirector;
 
   SignInModel({
     required this.jsonrpc,
