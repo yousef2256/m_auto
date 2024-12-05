@@ -35,4 +35,18 @@ class TextStyles {
     fontWeight: FontWeight.w400,
     color: AppColors.textBlack,
   );
+
+  // text 14px 600w black
+  static TextStyle text14px600wBlack = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textBlack,
+  );
+
+  // text 12px 600w black
+  static TextStyle text12px600wBlack = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textBlack,
+  );
 }
