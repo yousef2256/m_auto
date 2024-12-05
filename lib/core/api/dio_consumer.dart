@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:m_auto/core/api/api_cosumer.dart';
 import 'package:m_auto/core/api/api_error_handler.dart';
-import 'package:m_auto/core/api/api_interceptors.dart';
+import 'package:m_auto/core/api/api_interceptor.dart';
 import 'package:m_auto/core/api/api_constents.dart';
 
 class DioConsumer extends ApiConsumer {
@@ -10,17 +9,13 @@ class DioConsumer extends ApiConsumer {
   DioConsumer({required this.dio}) {
     dio.options.baseUrl = ApiConstents.baseUrl;
     dio.interceptors.add(ApiInterceptors());
-    dio.interceptors.add(
-      PrettyDioLogger(
-        requestHeader: true,
-        requestBody: true,
-        responseHeader: true,
-        responseBody: true,
-        error: true,
-        compact: true,
-        maxWidth: 90,
-      ),
-    );
+    dio.interceptors.add(LogInterceptor(
+      requestBody: true,
+      requestHeader: true,
+      responseHeader: true,
+      responseBody: true,
+      error: true,
+    ));
   }
 
   // Delete

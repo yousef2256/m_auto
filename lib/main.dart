@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:m_auto/core/helpers/bloc_observer.dart';
@@ -10,6 +11,14 @@ void main() {
   Bloc.observer = MyBlocObserver();
   // ensure initialized
   WidgetsFlutterBinding.ensureInitialized();
+
+  // set system ui overlay style
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    systemNavigationBarColor:
+        Colors.transparent, 
+    systemNavigationBarIconBrightness:
+        Brightness.dark,
+  ));
 
   // run app
   runApp(
