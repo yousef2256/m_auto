@@ -5,6 +5,7 @@ import 'package:m_auto/features/home_fetures/ui/widgets/home_app_bar.dart';
 import 'package:m_auto/features/home_fetures/ui/widgets/your_leads_summery.dart';
 
 class HomeScreen extends StatelessWidget {
+
   const HomeScreen({super.key});
 
   @override

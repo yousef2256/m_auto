@@ -13,7 +13,7 @@ class MAutoApp extends StatelessWidget {
       onGenerateRoute: appRouter.generateRouter,
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.login,
-      title: 'Movis App',
+      title: 'M Auto',
       theme: lightTheme,
     );
   }
