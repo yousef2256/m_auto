@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:m_auto/core/helpers/navigations.dart';
 import 'package:m_auto/core/helpers/spaser.dart';
+import 'package:m_auto/core/routes/routes.dart';
 import 'package:m_auto/core/theme/app_colors.dart';
 import 'package:m_auto/core/utils/constets/images_constents.dart';
 import 'package:m_auto/core/utils/texts/text_styles.dart';
@@ -23,11 +25,7 @@ class LoginScreen extends StatelessWidget {
             child: BlocConsumer<LoginCubit, LoginState>(
               listener: (context, state) {
                 if (state is SignInSuccess) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("Login Success"),
-                    ),
-                  );
+                  context.pushReplacementNamed(Routes.layout);
                 } else if (state is SignInFailure) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
@@ -40,6 +38,14 @@ class LoginScreen extends StatelessWidget {
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    // welcome text
+                    Text(
+                      "W e l c o m e   B a c k !  ✋",
+                      style: TextStyles.text14px400wBlack,
+                    ),
+                    // spaser
+                    verticalSpace(30.h),
+
                     // app logo
                     Container(
                       width: 125.w,
@@ -48,14 +54,7 @@ class LoginScreen extends StatelessWidget {
                         ImagesConstents.appLogo2,
                       ),
                     ),
-                    // spaser
-                    verticalSpace(30.h),
 
-                    // welcome text
-                    Text(
-                      "Hi, Welcome Back! ✋",
-                      style: TextStyles.text22px700w,
-                    ),
                     // spaser
                     verticalSpace(40.h),
 

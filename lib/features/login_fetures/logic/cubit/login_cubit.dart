@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:m_auto/core/api/api_constents.dart';
 import 'package:m_auto/core/api/api_cosumer.dart';
 import 'package:m_auto/core/api/api_error_handler.dart';
@@ -12,10 +13,13 @@ class LoginCubit extends Cubit<LoginState> {
 
   // form key
   final formKey = GlobalKey<FormState>();
-  
+
   // controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  // secure storage
+  final storage = const FlutterSecureStorage();
 
   // api consumer
   final ApiConsumer api;
@@ -54,8 +58,13 @@ class LoginCubit extends Cubit<LoginState> {
       if (result != null && result is Map<String, dynamic>) {
         if (result[ApiKeys.accessToken] != null &&
             result[ApiKeys.refreshToken] != null) {
-          emit(SignInSuccess());
           userData = SignInModel.fromJson(result);
+          // save tokens to secure storage
+          await storage.write(
+              key: ApiKeys.accessToken, value: userData!.accessToken);
+          await storage.write(
+              key: ApiKeys.refreshToken, value: userData!.refreshToken);
+          emit(SignInSuccess());
         } else {
           emit(SignInFailure(
               errorMessage: 'Plese check your email and password'));
