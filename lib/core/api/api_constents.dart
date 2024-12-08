@@ -4,6 +4,7 @@ class ApiConstents {
 
   // End Points
   static const String login = 'api/login';
+  static const String userData = '/api/salesperson/home';
 }
 
 class ApiKeys {

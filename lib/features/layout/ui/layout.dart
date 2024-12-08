@@ -28,7 +28,7 @@ class Layout extends StatelessWidget {
             items: const [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite_border_rounded), label: 'Fivoret'),
+                  icon: Icon(Icons.favorite_rounded), label: 'Fivoret'),
               BottomNavigationBarItem(
                   icon: Icon(Icons.people_rounded), label: 'Leads'),
               BottomNavigationBarItem(
