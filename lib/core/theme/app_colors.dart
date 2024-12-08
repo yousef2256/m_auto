@@ -18,4 +18,10 @@ class AppColors {
   // text colors
   static const Color textGrey = Color(0xFF767676);
   static const Color textBlack = Color(0xFF000000);
+
+  // summary cards colors
+  static const Color summaryCardsGreen = Color(0xFFD0FFCF);
+  static const Color summaryCardsPink = Color(0xFFFFE7F0);
+  static const Color summaryCardsYellow = Color(0xFFFFEACF);
+  static const Color summaryCardsBlue = Color(0xFFCFF9FF);
 }

@@ -11,7 +11,8 @@ class ApiInterceptors extends Interceptor {
       const storage = FlutterSecureStorage();
       final token = await storage.read(key: ApiKeys.accessToken);
       if (token != null) {
-        options.headers[ApiKeys.authorization] = 'Bearer $token';
+        options.headers[ApiKeys.authorization] = '$token';
+        print('token===============================: $token');
       }
       handler.next(options);
     } catch (error) {

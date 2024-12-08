@@ -4,7 +4,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:m_auto/core/api/api_constents.dart';
 import 'package:m_auto/core/api/api_cosumer.dart';
 import 'package:m_auto/core/api/api_error_handler.dart';
-import 'package:m_auto/features/login_fetures/data/models/sign_in_modle.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -24,8 +23,6 @@ class LoginCubit extends Cubit<LoginState> {
   // api consumer
   final ApiConsumer api;
 
-  // sign in model
-  SignInModel? userData;
 
   //remember me
   bool rememberMe = false;
@@ -58,12 +55,12 @@ class LoginCubit extends Cubit<LoginState> {
       if (result != null && result is Map<String, dynamic>) {
         if (result[ApiKeys.accessToken] != null &&
             result[ApiKeys.refreshToken] != null) {
-          userData = SignInModel.fromJson(result);
+
           // save tokens to secure storage
           await storage.write(
-              key: ApiKeys.accessToken, value: userData!.accessToken);
+              key: ApiKeys.accessToken, value: result[ApiKeys.accessToken]);
           await storage.write(
-              key: ApiKeys.refreshToken, value: userData!.refreshToken);
+              key: ApiKeys.refreshToken, value: result[ApiKeys.refreshToken]);
           emit(SignInSuccess());
         } else {
           emit(SignInFailure(
