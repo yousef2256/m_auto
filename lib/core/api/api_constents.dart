@@ -17,6 +17,7 @@ class ApiKeys {
   static const String isBranchManager = 'is_branch_manager';
   static const String isDirector = 'is_director';
   static const String authorization = 'Authorization';
+  static const String salespersonName = 'salesperson_name';
 
   // tokens
   static const String accessToken = 'access_token';

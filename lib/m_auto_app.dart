@@ -12,7 +12,7 @@ class MAutoApp extends StatelessWidget {
     return MaterialApp(
       onGenerateRoute: appRouter.generateRouter,
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.layout,
+      initialRoute: Routes.login,
       title: 'M Auto',
       theme: lightTheme,
     );

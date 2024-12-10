@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:m_auto/core/api/api_constents.dart';
 import 'package:m_auto/core/api/api_cosumer.dart';
 import 'package:m_auto/core/api/api_error_handler.dart';
+import 'package:m_auto/features/home_fetures/dart/models/sale_user_modle.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -11,13 +12,12 @@ class HomeCubit extends Cubit<HomeState> {
   // api consumer
   final ApiConsumer api;
 
-  // get user data
-  Future<dynamic> getUserData() async {
+  // get home page data
+  homePageData() async {
     try {
-      final response = await api.get(ApiConstents.userData, data: {});
+      await api.post(ApiKeys.accessToken, data: {});
     } on ApiErrorHandler catch (e) {
-      print('error===============================: ${e.errorModel.error}');
-      emit(HomeFailure(e.errorModel.error));
+      print(e.errorModel);
     }
   }
 }
