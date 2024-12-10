@@ -10,6 +10,7 @@ import 'package:m_auto/core/utils/texts/text_styles.dart';
 import 'package:m_auto/core/widgets/custome_button.dart';
 import 'package:m_auto/core/widgets/custome_text_button.dart';
 import 'package:m_auto/core/widgets/custome_text_feald.dart';
+import 'package:m_auto/features/home_fetures/logic/cubit/home_cubit.dart';
 import 'package:m_auto/features/login_fetures/logic/cubit/login_cubit.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -25,6 +26,7 @@ class LoginScreen extends StatelessWidget {
             child: BlocConsumer<LoginCubit, LoginState>(
               listener: (context, state) {
                 if (state is SignInSuccess) {
+                  context.read<HomeCubit>().homePageData();
                   context.pushNamedAndRemoveUntil(
                     Routes.layout,
                     predicate: (Route<dynamic> route) => false,

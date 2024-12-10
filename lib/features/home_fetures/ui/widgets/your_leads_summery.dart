@@ -3,10 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:m_auto/core/helpers/spaser.dart';
 import 'package:m_auto/core/theme/app_colors.dart';
 import 'package:m_auto/core/utils/texts/text_styles.dart';
+import 'package:m_auto/features/home_fetures/dart/models/sale_user_modle.dart';
 import 'package:m_auto/features/home_fetures/ui/widgets/summary_cards_design.dart';
 
 class YourLeadsSummary extends StatelessWidget {
-  const YourLeadsSummary({super.key});
+  final SaleUserModle? userData;
+  const YourLeadsSummary({super.key, this.userData});
 
   @override
   Widget build(BuildContext context) {
