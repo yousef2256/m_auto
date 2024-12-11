@@ -7,7 +7,7 @@ import 'package:m_auto/features/home_fetures/dart/models/sale_user_modle.dart';
 import 'package:m_auto/features/home_fetures/ui/widgets/summary_cards_design.dart';
 
 class YourLeadsSummary extends StatelessWidget {
-  final SaleUserModle? userData;
+  final SalesResponse? userData;
   const YourLeadsSummary({super.key, this.userData});
 
   @override

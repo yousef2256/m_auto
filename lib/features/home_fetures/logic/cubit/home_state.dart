@@ -8,8 +8,8 @@ final class HomeInitial extends HomeState {}
 final class HomeDataLoading extends HomeState {}
 
 final class HomeDataSuccess extends HomeState {
-  final SaleUserModle saleUserModle;
-  HomeDataSuccess(this.saleUserModle);
+  final SalesResponse user;
+  HomeDataSuccess(this.user);
 }
 
 final class HomeDataFelure extends HomeState {

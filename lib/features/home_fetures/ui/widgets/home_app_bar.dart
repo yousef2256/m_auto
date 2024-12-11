@@ -8,7 +8,14 @@ import 'package:m_auto/core/utils/constets/images_constents.dart';
 import 'package:m_auto/core/utils/texts/text_styles.dart';
 
 class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({super.key});
+  final String name;
+  final String plase;
+
+  const HomeAppBar({
+    super.key,
+    required this.name,
+    required this.plase,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +43,8 @@ class HomeAppBar extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Mohammed Ahmed', style: TextStyles.text14px600wBlack),
-                  Text('New Cairo Br.', style: TextStyles.text12px600wBlack),
+                  Text(name, style: TextStyles.text14px600wBlack),
+                  Text(plase, style: TextStyles.text12px600wBlack),
                   Text('Sales', style: TextStyles.text12px600wBlack),
                 ],
               ),

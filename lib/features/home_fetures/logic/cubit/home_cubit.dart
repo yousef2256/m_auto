@@ -14,10 +14,12 @@ class HomeCubit extends Cubit<HomeState> {
 
   // get home page data
   homePageData() async {
+    emit(HomeDataLoading());
     try {
-      await api.post(ApiKeys.accessToken, data: {});
+      final response = await api.post(ApiConstents.userData, data: {});
+      emit(HomeDataSuccess(SalesResponse.fromJson(response)));
     } on ApiErrorHandler catch (e) {
-      print(e.errorModel);
+      emit(HomeDataFelure(errorMessage: e.errorModel.error));
     }
   }
 }

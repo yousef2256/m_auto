@@ -1,17 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:m_auto/core/api/api_constents.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:m_auto/core/helpers/cash_helper.dart';
 
 class ApiInterceptors extends Interceptor {
-  // Request
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    const FlutterSecureStorage storage = FlutterSecureStorage();
-    options.headers[ApiKeys.accessToken] =
-        await storage.read(key: ApiKeys.accessToken) != null
-            ? '${await storage.read(key: ApiKeys.accessToken)}'
-            : null;
+    final storage = CacheHelper();
+    final token = await storage.getData(key: ApiKeys.accessToken);
+    if (token != null) {
+      options.headers[ApiKeys.authorization] = 'Bearer $token';
+    }
     super.onRequest(options, handler);
   }
 }

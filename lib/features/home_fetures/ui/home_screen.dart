@@ -13,29 +13,47 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit, HomeState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        context.read<HomeCubit>().homePageData();
+        if (state is HomeDataFelure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.errorMessage),
+            ),
+          );
+        }
+      },
       builder: (context, state) {
         return Scaffold(
-          body: SafeArea(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // header
-                  const HomeAppBar(),
-                  verticalSpace(16),
+          body: state is HomeDataLoading
+              ? const Center(child: CircularProgressIndicator())
+              : state is HomeDataSuccess
+                  ? SafeArea(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.w),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // header
+                            HomeAppBar(
+                              name: state.user.result.salespersonName,
+                              plase: state.user.result.branch,
+                            ),
+                            verticalSpace(16),
 
-                  // Your Leads Summary
-                  const YourLeadsSummary(),
-                  verticalSpace(16),
+                            // Your Leads Summary
+                            const YourLeadsSummary(),
+                            verticalSpace(16),
 
-                  // Leads
-                  const Leads(),
-                ],
-              ),
-            ),
-          ),
+                            // Leads
+                            const Leads(),
+                          ],
+                        ),
+                      ),
+                    )
+                  : const Center(
+                      child: Text("No internet Connection"),
+                    ),
         );
       },
     );
