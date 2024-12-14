@@ -3,12 +3,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:m_auto/core/helpers/spaser.dart';
 import 'package:m_auto/core/theme/app_colors.dart';
 import 'package:m_auto/core/utils/texts/text_styles.dart';
-import 'package:m_auto/features/home_fetures/dart/models/sale_user_modle.dart';
+import 'package:m_auto/features/home_fetures/dart/models/sales_person_home_model.dart';
 import 'package:m_auto/features/home_fetures/ui/widgets/summary_cards_design.dart';
 
 class YourLeadsSummary extends StatelessWidget {
-  final SalesResponse? userData;
-  const YourLeadsSummary({super.key, this.userData});
+  final SalesPersonHomeModel? userData;
+  final String leadsWonValue;
+  final String lateLeadsValue;
+  final String followUpValue;
+  final String totalLeadsValue;
+  const YourLeadsSummary({
+    super.key,
+    this.userData,
+    required this.leadsWonValue,
+    required this.lateLeadsValue,
+    required this.followUpValue,
+    required this.totalLeadsValue,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,24 +42,24 @@ class YourLeadsSummary extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               horizontalSpace(6.w),
-              const SummaryCardsDesign(
+              SummaryCardsDesign(
                 title: 'Leads won',
-                value: '23',
+                value: leadsWonValue,
                 color: AppColors.summaryCardsGreen,
               ),
-              const SummaryCardsDesign(
+              SummaryCardsDesign(
                 title: 'Late Lead',
-                value: '0',
+                value: lateLeadsValue,
                 color: AppColors.summaryCardsPink,
               ),
-              const SummaryCardsDesign(
+              SummaryCardsDesign(
                 title: 'Follow up',
-                value: '9',
+                value: followUpValue,
                 color: AppColors.summaryCardsYellow,
               ),
-              const SummaryCardsDesign(
+              SummaryCardsDesign(
                 title: 'Total Leads',
-                value: '2',
+                value: totalLeadsValue,
                 color: AppColors.summaryCardsBlue,
               ),
               horizontalSpace(6.w),

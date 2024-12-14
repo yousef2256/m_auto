@@ -11,6 +11,8 @@ class CustomeTextFeald extends StatelessWidget {
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final String? Function(String?)? validator;
+  final EdgeInsets? contentPadding;
+
   const CustomeTextFeald({
     super.key,
     required this.hintText,
@@ -21,6 +23,7 @@ class CustomeTextFeald extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.validator,
+    this.contentPadding,
   });
 
   @override
@@ -36,7 +39,8 @@ class CustomeTextFeald extends StatelessWidget {
         suffixIcon: suffixIcon,
         hintText: hintText,
         hintStyle: TextStyles.text14px400wGrey,
-        contentPadding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 18.w),
+        contentPadding: contentPadding ??
+            EdgeInsets.symmetric(vertical: 15.h, horizontal: 18.w),
         fillColor: Theme.of(context).colorScheme.surface,
         filled: true,
         focusedBorder: OutlineInputBorder(
