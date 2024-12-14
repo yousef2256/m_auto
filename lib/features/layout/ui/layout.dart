@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:m_auto/core/theme/app_colors.dart';
-import 'package:m_auto/features/layout/logic/cubit/layout_cubit.dart';
+import 'package:m_auto/features/layout/logic/layout_cubit.dart';
 
 class Layout extends StatelessWidget {
   const Layout({super.key});

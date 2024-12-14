@@ -25,14 +25,10 @@ class HomeCubit extends Cubit<HomeState> {
       final result =
           SalesPersonHomeModel.fromJson(response[HomeModelConstants.result]);
       salesPersonHomeModel = result;
-      print(
-          'result:222222222222222222222222222222222222222222222222222222222222 ${salesPersonHomeModel}');
       emit(HomeDataSuccess(result));
     } on ApiErrorHandler catch (e) {
-      print('API Error: ${e.errorModel.error}');
       emit(HomeDataFelure(errorMessage: e.errorModel.error));
     } catch (e) {
-      print('Unexpected error: $e');
       emit(HomeDataFelure(errorMessage: e.toString()));
     }
   }

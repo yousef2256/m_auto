@@ -61,7 +61,6 @@ class LoginCubit extends Cubit<LoginState> {
         } else {
           emit(SignInFailure(
               errorMessage: 'Plese check your email and password'));
-          print("bad response");
         }
       }
     } on ApiErrorHandler catch (e) {

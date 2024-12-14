@@ -25,13 +25,6 @@ class Notifications extends StatelessWidget {
             // today text
             Text('Today', style: TextStyles.text14px400wBlack),
             verticalSpace(15.h),
-
-            // notifications list
-            Expanded(
-              child: ListView.builder(
-                itemBuilder: (context, index) => Container(),
-              ),
-            ),
           ],
         ),
       ),
