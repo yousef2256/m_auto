@@ -49,6 +49,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 * ![image](https://github.com/user-attachments/assets/ea3af101-d1f6-4f69-a262-2b7454e64da0)
 
 * ![image](https://github.com/user-attachments/assets/7350b48e-86d6-4102-8ecc-1e6b22b1824f)
-* 
+
 * ![image](https://github.com/user-attachments/assets/38f683b5-c5d1-4132-99b6-d281861b47f6)
 
