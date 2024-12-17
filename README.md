@@ -9,8 +9,9 @@ A Flutter project for M-Auto company.
 
 ## Screenshots
 
-![](https://m-auto.com/images/screenshots/1.png)
-![](https://m-auto.com/images/screenshots/2.png)
+* Architecture diagram
+* ![image](https://github.com/user-attachments/assets/00daaaea-17ba-4d81-9e8c-6e2c69cdc79f)
+
 
 ## Getting Started
 
@@ -21,8 +22,8 @@ samples, guidance on mobile development, and a full API reference.
 
 ### Prerequisites
 
-* Flutter 3.0.0 or later
-* Dart 2.17.0 or later
+* Clean Architecture
+* Responsive Design using Flutter ScreenUtil
 * Android SDK (for Android development)
 * Xcode (for iOS development)
 
