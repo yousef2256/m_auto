@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:m_auto/core/helpers/spaser.dart';
+import 'package:m_auto/core/theme/app_colors.dart';
+import 'package:m_auto/core/widgets/custome_lead_card.dart';
 import 'package:m_auto/features/home_fetures/logic/home_cubit.dart';
 import 'package:m_auto/features/home_fetures/ui/widgets/leads.dart';
 import 'package:m_auto/features/home_fetures/ui/widgets/home_app_bar.dart';
@@ -42,16 +44,40 @@ class HomeScreen extends StatelessWidget {
 
                             // Your Leads Summary
                             YourLeadsSummary(
-                              leadsWonValue: state.user.wonLeads.toString(),
-                              lateLeadsValue: state.user.lateLeads.toString(),
-                              followUpValue:
-                                  state.user.followUpLeads.toString(),
-                              totalLeadsValue: state.user.newLeads.toString(),
+                              leadsWonValue: '${state.user.wonLeads}',
+                              lateLeadsValue: '${state.user.lateLeads}',
+                              followUpValue: '${state.user.followUpLeads}',
+                              totalLeadsValue: '${state.user.newLeads}',
                             ),
                             verticalSpace(16),
 
+                            /// TODO I Now this is hard Code but I will fix it whenn Under Stand
+                            /// Your API 😑😑😑😑
+
                             // Leads
                             const Leads(),
+                            verticalSpace(16),
+
+                            // leads cad
+                            CustomeLeadsCard(
+                              whenAccepted: () {},
+                              whenRejected: () {},
+                              carBrand: 'BMW X7',
+                              leadTitle: 'New Lead',
+                              leadName: 'Bernhard Hilmar',
+                            ),
+
+                            verticalSpace(10),
+
+                            // card
+                            CustomeLeadsCard(
+                              color: AppColors.summaryCardsYellow,
+                              whenPending: () {},
+                              carBrand: 'BMW X7',
+                              leadName: 'Bernhard Hilmar',
+                              leadDate: 'Last Follow up Today 4:23pm',
+                              leadTitle: 'Follow up Today at 7:30 PM',
+                            ),
                           ],
                         ),
                       ),
