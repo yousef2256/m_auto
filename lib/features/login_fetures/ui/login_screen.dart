@@ -64,21 +64,11 @@ class LoginScreen extends StatelessWidget {
                       // spaser
                       verticalSpace(40.h),
 
-                      // Email text
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "Email Address*",
-                          style: TextStyles.text14px700wGrey,
-                        ),
-                      ),
-
-                      verticalSpace(8.h),
-
                       // email text field
                       CustomeTextFeald(
-                        controller: context.read<LoginCubit>().emailController,
+                        labelText: "Email Address*",
                         hintText: "Email@example.com",
+                        controller: context.read<LoginCubit>().emailController,
                         textInputType: TextInputType.emailAddress,
                         textInputAction: TextInputAction.next,
 
@@ -89,21 +79,12 @@ class LoginScreen extends StatelessWidget {
                       // spaser
                       verticalSpace(10.h),
 
-                      // password text
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "Password*",
-                          style: TextStyles.text14px700wGrey,
-                        ),
-                      ),
-                      verticalSpace(8.h),
-
                       // password text field
                       CustomeTextFeald(
+                        labelText: "Password*",
+                        hintText: "*************",
                         controller:
                             context.read<LoginCubit>().passwordController,
-                        hintText: "*************",
                         textInputType: TextInputType.visiblePassword,
                         textInputAction: TextInputAction.done,
                         obscureText: context.read<LoginCubit>().showPassword,

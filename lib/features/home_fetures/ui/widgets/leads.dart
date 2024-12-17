@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:m_auto/core/helpers/spaser.dart';
+import 'package:m_auto/core/helpers/navigations.dart';
+import 'package:m_auto/core/routes/routes.dart';
 import 'package:m_auto/core/theme/app_colors.dart';
 import 'package:m_auto/core/utils/texts/text_styles.dart';
+import 'package:m_auto/core/widgets/custome_small_button.dart';
 
 class Leads extends StatelessWidget {
   const Leads({super.key});
@@ -18,24 +18,22 @@ class Leads extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Leads', style: TextStyles.text16px600wBlack),
-            Container(
-              padding: EdgeInsets.all(9.r),
-              decoration: BoxDecoration(
+            GestureDetector(
+              onTap: () {
+                context.pushNamed(Routes.addNewLead);
+              },
+              child: CustomeSmallButton(
+                egeInset: 8,
                 color: AppColors.primary,
-                borderRadius: BorderRadius.circular(10.r),
+                onTap: () => context.pushNamed(Routes.addNewLead),
+                icon: Icon(
+                  Icons.add,
+                  size: 16.r,
+                  color: AppColors.primarywhite,
+                ),
               ),
-              child: Icon(Icons.add, size: 16.r, color: AppColors.primarywhite),
             ),
           ],
-        ),
-
-        // leads list
-        verticalSpace(16.h),
-        Container(
-          decoration: BoxDecoration(
-            color: AppColors.primarybackground,
-            borderRadius: BorderRadius.circular(10.r),
-          ),
         ),
       ],
     );

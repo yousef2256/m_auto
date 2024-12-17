@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:m_auto/core/widgets/custome_small_button.dart';
 import 'package:m_auto/core/widgets/custome_text_feald.dart';
+
+import '../../../../core/theme/app_colors.dart';
 
 class SearchAndFilter extends StatelessWidget {
   const SearchAndFilter({
@@ -20,17 +23,13 @@ class SearchAndFilter extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onPrimary),
           ),
         ),
-        Container(
-          padding: EdgeInsets.all(13.r),
-          margin: EdgeInsets.only(left: 10.w),
-          decoration: BoxDecoration(
-            border: Border.all(
-                color: Theme.of(context).colorScheme.onPrimary),
-            borderRadius: BorderRadius.circular(8.r),
-          ),
-          child: Icon(Icons.filter_list,
-              size: 18.r,
-              color: Theme.of(context).colorScheme.onPrimary),
+
+        // filter button
+        CustomeSmallButton(
+          onTap: () {},
+          borderColor: AppColors.primarygrey,
+          icon:
+              Icon(Icons.filter_list, size: 18.r, color: AppColors.primarygrey),
         ),
       ],
     );

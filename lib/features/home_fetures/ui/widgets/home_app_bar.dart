@@ -30,25 +30,28 @@ class HomeAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // cercular avatar
-          Row(
-            children: [
-              CircleAvatar(
-                foregroundImage: const AssetImage(ImagesConstents.userphoto),
-                radius: 30.r,
-                backgroundColor: AppColors.primarywhite,
-              ),
-              horizontalSpace(9.w),
+          GestureDetector(
+            onTap: () => context.pushNamed(Routes.profile),
+            child: Row(
+              children: [
+                CircleAvatar(
+                  foregroundImage: const AssetImage(ImagesConstents.userphoto),
+                  radius: 30.r,
+                  backgroundColor: AppColors.primarywhite,
+                ),
+                horizontalSpace(9.w),
 
-              // column name , location , Sales
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(name, style: TextStyles.text14px600wBlack),
-                  Text(plase, style: TextStyles.text12px600wBlack),
-                  Text('Sales', style: TextStyles.text12px600wBlack),
-                ],
-              ),
-            ],
+                // column name , location , Sales
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(name, style: TextStyles.text14px600wBlack),
+                    Text(plase, style: TextStyles.text12px600wBlack),
+                    Text('Sales', style: TextStyles.text12px600wBlack),
+                  ],
+                ),
+              ],
+            ),
           ),
 
           // notification icon
