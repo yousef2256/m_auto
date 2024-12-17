@@ -4,6 +4,7 @@ import 'package:m_auto/core/helpers/navigations.dart';
 import 'package:m_auto/core/routes/routes.dart';
 import 'package:m_auto/core/theme/app_colors.dart';
 import 'package:m_auto/core/utils/texts/text_styles.dart';
+import 'package:m_auto/core/widgets/custome_small_button.dart';
 
 class Leads extends StatelessWidget {
   const Leads({super.key});
@@ -21,14 +22,15 @@ class Leads extends StatelessWidget {
               onTap: () {
                 context.pushNamed(Routes.addNewLead);
               },
-              child: Container(
-                padding: EdgeInsets.all(9.r),
-                decoration: BoxDecoration(
-                  color: AppColors.primary,
-                  borderRadius: BorderRadius.circular(10.r),
+              child: CustomeSmallButton(
+                egeInset: 8,
+                color: AppColors.primary,
+                onTap: () => context.pushNamed(Routes.addNewLead),
+                icon: Icon(
+                  Icons.add,
+                  size: 16.r,
+                  color: AppColors.primarywhite,
                 ),
-                child:
-                    Icon(Icons.add, size: 16.r, color: AppColors.primarywhite),
               ),
             ),
           ],
