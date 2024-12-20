@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:m_auto/core/helpers/spaser.dart';
 import 'package:m_auto/core/utils/texts/text_styles.dart';
-import 'package:m_auto/core/widgets/custome_dripdown_and_textfeald.dart';
+import 'package:m_auto/core/widgets/custome_phone_feald.dart';
 import 'package:m_auto/core/widgets/custome_dropdown.dart';
 import 'package:m_auto/core/widgets/custome_text_feald.dart';
 import 'package:m_auto/features/home_fetures/ui/widgets/lead_status.dart';
@@ -44,7 +44,7 @@ class ProfileScreen extends StatelessWidget {
             ),
 
             // phone
-            const CustomeDripdownAndTextFeald(
+            const CustomePhoneField(
               lableText: 'Phone',
               hintText: '0102258763',
               isReadOnly: true,

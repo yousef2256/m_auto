@@ -6,6 +6,7 @@ import 'package:m_auto/core/routes/routes.dart';
 import 'package:m_auto/features/home_fetures/logic/home_cubit.dart';
 import 'package:m_auto/features/home_fetures/ui/profile_screen.dart';
 import 'package:m_auto/features/layout/logic/layout_cubit.dart';
+import 'package:m_auto/features/leads_fetures/logic/leads_cubit.dart';
 import 'package:m_auto/features/leads_fetures/ui/add_new_lead_screen.dart';
 import 'package:m_auto/features/login_fetures/logic/login_cubit.dart';
 import 'package:m_auto/features/login_fetures/ui/login_screen.dart';
@@ -47,7 +48,11 @@ class AppRouter {
 
       case Routes.addNewLead:
         return MaterialPageRoute(
-          builder: (context) => const AddNewLeadScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                LeadsCubit(DioConsumer(dio: Dio()))..getCarBrandsAndModels(),
+            child: const AddNewLeadScreen(),
+          ),
         );
 
       // Default Route if no route is defined
