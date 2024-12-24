@@ -20,13 +20,22 @@ class LeadsCubit extends Cubit<LeadsState> {
   // Add this variable to store selected country code
   String selectedCountryCode = '+20'; // Default to Egypt code
 
-
-
   // Add this method to handle country code changes
   void updateCountryCode(String? code) {
     if (code != null) {
       selectedCountryCode = code;
     }
+  }
+
+  // Add these variables
+  int? selectedBrandId;
+  int? selectedModelId;
+
+  // Add this method
+  void updateSelectedBrand(int brandId) {
+    selectedBrandId = brandId;
+    selectedModelId = null; // Reset model selection when brand changes
+    emit(BrandSelected(brandId));
   }
 
   // add new lead
@@ -38,10 +47,9 @@ class LeadsCubit extends Cubit<LeadsState> {
         ApiKeys.params: {
           ApiKeys.customerName: customerNameController.text,
           // country code + phone number
-          ApiKeys.customerPhone:
-              selectedCountryCode + customerPhoneController.text,
-          ApiKeys.carBrandId: 1,
-          ApiKeys.carModelId: 1,
+          ApiKeys.customerPhone: customerPhoneController.text,
+          ApiKeys.carBrandId: selectedBrandId, // Use selected brand ID
+          ApiKeys.carModelId: selectedModelId, // Use selected model ID
           ApiKeys.notes: notesController.text,
           ApiKeys.budget: 2000000,
           //optional data
@@ -65,21 +73,20 @@ class LeadsCubit extends Cubit<LeadsState> {
     }
   }
 
-    // Add this to store the brands list
+  // Add this to store the brands list
   List<CarBrandsAndModels> carBrands = [];
-
-
 
   // get car brands and models
   getCarBrandsAndModels() async {
     emit(GetCarBrandsAndModelsLoading());
     try {
-      final response = await api.post(ApiConstents.carModelsAndBrands, data: {});
+      final response =
+          await api.post(ApiConstents.carModelsAndBrands, data: {});
       final List<dynamic> resultList = response[ApiKeys.result];
-      carBrands = resultList
-          .map((e) => CarBrandsAndModels.fromJson(e))
-          .toList();
+      carBrands =
+          resultList.map((e) => CarBrandsAndModels.fromJson(e)).toList();
       emit(GetCarBrandsAndModelsSuccess(carBrands));
+      print('carBrand ============================== $carBrands');
     } on ApiErrorHandler catch (e) {
       emit(GetCarBrandsAndModelsFailure(errorMessage: e.errorModel.error));
     } catch (e) {

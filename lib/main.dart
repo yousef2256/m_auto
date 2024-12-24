@@ -7,7 +7,7 @@ import 'package:m_auto/core/helpers/cash_helper.dart';
 import 'package:m_auto/core/routes/app_rowter.dart';
 import 'package:m_auto/m_auto_app.dart';
 
-void main() {
+void main() async {
   // add observer
   Bloc.observer = MyBlocObserver();
 
@@ -24,6 +24,9 @@ void main() {
     systemNavigationBarColor: Colors.transparent,
     systemNavigationBarIconBrightness: Brightness.dark,
   ));
+
+  // To fix texts being hidden bug in flutter_screenutil in release mode.
+  await ScreenUtil.ensureScreenSize();
 
   // run app
   runApp(

@@ -23,10 +23,17 @@ final class GetCarBrandsAndModelsLoading extends LeadsState {}
 
 final class GetCarBrandsAndModelsSuccess extends LeadsState {
   GetCarBrandsAndModelsSuccess(this.result);
-  final CarBrandsAndModels result;
+  final List<CarBrandsAndModels> result;
 }
 
 final class GetCarBrandsAndModelsFailure extends LeadsState {
   GetCarBrandsAndModelsFailure({required this.errorMessage});
   final String errorMessage;
+}
+
+// brand selected
+class BrandSelected extends LeadsState {
+  final int brandId;
+
+  BrandSelected(this.brandId);
 }
